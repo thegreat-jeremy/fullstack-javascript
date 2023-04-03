@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // arrow function - 화살표 함수
+      // 함수 선언식
+      function hello(name) {
+        return "Hello " + name;
+      }
+
+      // 함수 표현식
+      const hello2 = function (name) {
+        return "Hello " + name;
+      };
+
+      // 화살표 함수
+      // function 키워드를 생략할 수 있음
+      // 파라미터 정의 부분과 코드 블록 사이에 화살표(=>)가 온다
+      const hello3 = (name) => {
+        return "Hello " + name;
+      };
+
+      // 코드 블록 안에 코드가 한줄이고, 그 코드가 return이면 return 키워드를 생략할 수 있음
+      // 코드 블록에 해당하는 중괄호를 삭제 하면 됨.
+      const hello4 = (name) => {
+        let msg = "Hello " + name;
+        return msg;
+      };
+
+      const hello5 = (name) => "Hello " + name;
+
+      console.log(hello5("Jeremy"));
+
+      let drinkList = [
+        {
+          name: "오렌지",
+          price: 1000,
+        },
+        {
+          name: "파워레이드",
+          price: 1400,
+        },
+        {
+          name: "커피",
+          price: 700,
+        },
+        {
+          name: "보리음료",
+          price: 1200,
+        },
+        {
+          name: "코카콜라",
+          price: 1000,
+        },
+      ];
+
+      const inputCoin = 1000;
+      const availableDrinkList = drinkList.filter(function (drink) {
+        if (drink.price <= inputCoin) return true;
+        else return false;
+      });
+
+      console.log(availableDrinkList);
+
+      const availableDrinkList2 = drinkList.filter(
+        (drink) => drink.price <= inputCoin
+      );
+      console.log(availableDrinkList2);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <label for="userName">당신의 이름은?(*)</label>
+      <input type="text" name="" id="userName" onkeyup="checkRequired();" />
+    </div>
+    <label for="selLanguage">가장 좋아하는 프로그래밍 언어는?</label>
+    <select name="" id="selLanguage" value="">
+      <option value="HTML">HTML</option>
+      <option value="CSS">CSS</option>
+      <option value="JS">JavaScript</option>
+    </select>
+    <button onclick="doSave();" id="btnSave" disabled>저장</button>
+    <button onclick="setLang();">설정</button>
+    <script>
+      // DOM 요소에 접근하고 나면,
+      // 요소의 속성 값을 읽어오거나, 반대로 속성 값을 변경.
+      function doSave() {
+        // 버튼 비활성화
+        document.querySelector("#btnSave").disabled = true;
+        if (document.querySelector("#userName").value === "") {
+          return alert("이름은 필수 입력값입니다.");
+        }
+
+        const favoriteLang = document.querySelector("#selLanguage").value;
+        console.log(favoriteLang);
+
+        // 서버와 통신하고 응답을 받았다고 가정
+        setTimeout(function () {
+          document.querySelector("#btnSave").disabled = false;
+        }, 2000);
+      }
+
+      function setLang() {
+        document.querySelector("#selLanguage").value = "JS";
+      }
+
+      function checkRequired() {
+        const userNameElement = document.querySelector("#userName");
+        if (userNameElement.value.length > 0) {
+          document.querySelector("#btnSave").disabled = false;
+        } else {
+          document.querySelector("#btnSave").disabled = true;
+        }
+      }
+
+      // 조회화면 - 데이터가 굉장히 많은 상황.
+      // 조회 조건 몇개 있음.
+      // 조회 조건의 필수 값이 입력되기 전 까지 조회 버튼을 비활성화.
+      // 필수 조건 값이 입력이 되면 조회 버튼 활성화
+      // 저장 - 주문버튼
+      // 버튼을 연속해서 계속 누르는 경우
+      // 주문 버튼을 한번 클릭하자마자 버튼 비활성화. 그리고 서버로 부터 응답이 오면 다시 활성화
+    </script>
+  </body>
+</html>

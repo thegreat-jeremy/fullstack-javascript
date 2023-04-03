@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // default function parameter
+      function sayHello(name) {
+        if (name !== undefined) {
+          console.log("Hello, " + name);
+        }
+      }
+
+      sayHello("Jeremy");
+      sayHello();
+
+      // default function parameter
+      // 함수를 호출할 때 파라미터를 던지지 않았을 때, 사용할 기본 값
+
+      function sayHello2(name = "World") {
+        console.log("Hello, " + name);
+      }
+
+      sayHello2("Jeremy");
+      sayHello2();
+
+      function getIntervalDateFormat(day, format = "YYYY-MM-DD") {
+        let now = new Date();
+        let dayMilliseconds = 60 * 60 * 24 * 1000;
+        let currentMilliseconds = now.getTime();
+        let intervalDate = currentMilliseconds + day * dayMilliseconds;
+        let d = new Date(intervalDate);
+        let year = d.getFullYear();
+        let month = (d.getMonth() + 1).toString().padStart(2, 0);
+        let date = d.getDate().toString().padStart(2, 0);
+        // YYYY-MM-DD
+        // YYYY.MM.DD
+        // MM.DD.YYYY
+        // replace()
+        return format
+          .replace("YYYY", year)
+          .replace("MM", month)
+          .replace("DD", date);
+        // 2022-MM-DD
+        // 2022-04-DD
+        // 2022-04-29
+      }
+
+      console.log(getIntervalDateFormat(-3, "YYYY-MM-DD"));
+      console.log(getIntervalDateFormat(-3, "MM-DD-YYYY"));
+      console.log(getIntervalDateFormat(-3));
+    </script>
+  </body>
+</html>

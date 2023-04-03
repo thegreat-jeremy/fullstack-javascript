@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="myFunction();">클릭</button>
+    <button id="btn2">클릭2</button>
+    <script>
+      // click 이벤트
+      // 사용자 마우스 왼쪽 클릭
+      // 버튼 - 검색, 조회, 저장, 주문
+      function myFunction() {
+        console.log("onclick 이벤트 발생");
+      }
+
+      //
+      document.querySelector("#btn2").addEventListener("click", function () {
+        console.log("이벤트 리스너 사용");
+      });
+    </script>
+  </body>
+</html>

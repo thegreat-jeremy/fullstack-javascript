@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 에러 핸들링
+
+      //   let n = 3;
+      //   n.substring(0, 3); // type error
+
+      //   console.log(""; // syntax error
+
+      //   num; // reference error
+
+      // try...catch 문
+      // 에러가 났을 때 프로그램 전체가 중단이 되는 것을 막기 위해서
+      // 에러를 프로그램적으로 관리하기 위해서
+
+      try {
+        // try문 안에 있는 코드를 실행
+        console.log("아직 에러가 없습니다.");
+        nonFunction();
+      } catch (error) {
+        // try문에 있는 코드가 에러가 났을 때
+        console.log(error);
+      } finally {
+        console.log("에러가 나든 안나든 실행");
+      }
+
+      console.log("try...catch문 밖의 코드");
+
+      let x = "";
+      try {
+        if (x === "") {
+          throw "x is empty";
+        }
+      } catch (error) {
+        // 에러 로그 기록
+        console.log(error);
+        writeLog(error);
+      }
+
+      function writeLog(message) {
+        // 로그파일 혹은 데이터베이스에 저장
+      }
+    </script>
+  </body>
+</html>

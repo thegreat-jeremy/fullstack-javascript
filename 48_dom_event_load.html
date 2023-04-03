@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btnSave">저장</button>
+    <button id="btnSearch">조회</button>
+    <button id="btnDelete">삭제</button>
+    <script>
+      function setEvent() {
+        document
+          .getElementById("btnSave")
+          .addEventListener("click", function () {
+            console.log("저장 실행");
+          });
+
+        document
+          .getElementById("btnSearch")
+          .addEventListener("click", function () {
+            console.log("조회 실행");
+          });
+
+        document
+          .getElementById("btnDelete")
+          .addEventListener("click", function () {
+            console.log("삭제 실행");
+          });
+      }
+
+      // setEvent();
+      // load - HTML 태그가 DOM 객체 트리 모델로 모두 추가가 되었을 때
+      window.addEventListener("load", function () {
+        setEvent();
+      });
+
+      // unload - 현재 페이지에서 다른 페이지로 이동할때, 혹은 페이지를 닫을 때
+      window.addEventListener("unload", function () {
+        // arrBigData = null;
+      });
+    </script>
+  </body>
+</html>

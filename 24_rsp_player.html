@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="rspPlayer('가위');">가위</button>
+    <button onclick="rspPlayer('바위');">바위</button>
+    <button onclick="rspPlayer('보');">보</button>
+    <script>
+      function getRandomInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function rspPlayer(userRsp) {
+        const rsp = ["가위", "바위", "보"];
+        const computerRsp = rsp[getRandomInteger(0, 2)];
+
+        const userWinValue = {
+          가위: "보",
+          바위: "가위",
+          보: "바위",
+        };
+
+        console.log("사용자가 선택한 것", userRsp);
+        console.log("컴퓨터가 선택한 것", computerRsp);
+
+        const result =
+          userRsp === computerRsp
+            ? "무승부"
+            : userWinValue[userRsp] === computerRsp
+            ? "사용자 승리"
+            : "컴퓨터 승리";
+        console.log(result);
+      }
+
+      function rspPlayer2(userRsp) {
+        const rsp = ["가위", "바위", "보"];
+        const computerRsp = rsp[getRandomInteger(0, 2)];
+        // console.log(computerRsp);
+
+        if (userRsp === "가위") {
+          if (computerRsp === "가위") {
+            console.log(
+              "사용자와 컴퓨터가 모두 가위를 냈습니다. 무승부입니다."
+            );
+          } else if (computerRsp === "바위") {
+            console.log(
+              "사용자는 가위, 컴퓨터 바위를 냈기 때문에 컴퓨터가 승리했습니다."
+            );
+          } else if (computerRsp === "보") {
+            console.log(
+              "사용자는 가위, 컴퓨터는 보를 냈기 때문에 사용자가 승리했습니다."
+            );
+          }
+        } else if (userRsp === "바위") {
+          if (computerRsp === "가위") {
+            console.log(
+              "사용자는 바위, 컴퓨터는 가위를 냈기 때문에 사용자가 승리했습니다."
+            );
+          } else if (computerRsp === "바위") {
+            console.log(
+              "사용자와 컴퓨터가 모두 바위를 냈기 때문에 무승부입니다."
+            );
+          } else if (computerRsp === "보") {
+            console.log(
+              "사용자는 바위, 컴퓨터는 보를 냈기 때문에 컴퓨터가 승리했습니다."
+            );
+          }
+        } else if (userRsp === "보") {
+          if (computerRsp === "가위") {
+            console.log(
+              "사용자는 보, 컴퓨터는 가위를 냈기 때문에 컴퓨터가 승리했습니다."
+            );
+          } else if (computerRsp === "바위") {
+            console.log(
+              "사용자는 보, 컴퓨터는 바위를 냈기 때문에 사용자가 승리했습니다."
+            );
+          } else if (computerRsp === "보") {
+            console.log(
+              "사용자와 컴퓨터가 모두 보를 냈기 때문에 무승부입니다."
+            );
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

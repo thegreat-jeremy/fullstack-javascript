@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Map 객체
+      // key-value
+      // Object가 key-value
+
+      let oPerson = {};
+      oPerson.name = "홍길동";
+      oPerson.email = "hong@gmail.com";
+      oPerson.phone = "010-0000-0000";
+      let count = 0;
+      for (const key in oPerson) {
+        console.log(key, oPerson[key]);
+        count++;
+      }
+
+      // const obj = {
+      //   id: 1,
+      //   name: "Fred",
+      // };
+
+      // console.log("Object.entries(obj)", Object.entries(obj));
+
+      // // ✅ Convert Object to Map
+      // const map1 = new Map(Object.entries(obj));
+      // console.log(map1); // 👉️ {'id' => 1, 'name' => 'Fred'}
+
+      // Map 객체
+      let personMap = new Map();
+      personMap.set("name", "홍길동");
+      personMap.set("email", "hong@gmail.com");
+      personMap.set("phone", "010-0000-0000");
+
+      console.log(personMap.get("name")); // get함수 key 파라미터
+      console.log(personMap.has("email")); // key가 있는지 체크
+      personMap.forEach(function (person) {
+        console.log(person);
+      });
+
+      console.log(personMap.size);
+      personMap.delete("email");
+      personMap.clear();
+
+      // Object와 Map은 매우 유사하지만 몇가지 차이가 있다.
+      // Object는 키값으로 문자열만 가질 수 있지만, Map은 키로 모든 데이터 타입을 가질 수 있다.
+      // Map객체는 몇개의 키로 데이터가 저장되어 있는지 계산할필요가 없다. size 프로퍼티로 바로 알 수 있다.
+      // Map 순서의 보장.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 데이터 타입 - Object
+      // Object는 데이터를 담을 수 있는 객체
+      // 관련 있는 정보를 하나로 묶어서 관리하고 싶을 때 사용
+      // 사람 - 이름, 전화번호, 이메일주소, 집주소
+      //   let name = "홍길동";
+      //   let phone = "010-0000-0000";
+      //   let email = "hong@gmail.com";
+      //   let address = "서울특별시 강서구 화곡동";
+      // 사람, 자동차, 제품과 같이 하나의 값으로 표현할 수 없는 경우에 하나의 변수로 이런 정보를 묶어서 관리할 수 있게 해줌
+      // 키(key)와 값(value)을 한 쌍을 갖습니다.
+      // Object는 모든 데이터 타입과 함수도 값으로 넣을 수 있다.
+      let person = {
+        name: "홍길동",
+        phone: "010-0000-0000",
+        email: "hong@gmail.com",
+        address: "서울특별시 강서구 화곡동",
+        // fullName() {
+        //   return this.name;
+        // },
+        // fullName: function () {
+        //   return this.name;
+        // },
+      };
+
+      // console.log(person.fullName());
+
+      // Object에 선언된 특정 키의 값을 읽을 때
+      let name = person.name; // 홍길동
+      let phone = person.phone; // 010-0000-0000
+      let email = person.email; // hong@gmail.com
+      let address = person.address; // 서울특별시 강서구 화곡동
+
+      // Object의 특정 키의 값을 변경할 때
+      person.address = "제주특별자치도 제주시";
+      console.log(person.address);
+      console.log(person);
+
+      // Object에 새로운 키-값 추가
+      person.gender = "남";
+      console.log(person);
+
+      let person2 = {};
+      person2.name = "유재석";
+      person2.age = 51;
+      console.log(person2);
+
+      // Object의 특정 키를 접근하는 방법
+      // 1. 변수명.키
+      // 2. 변수명["키"] - 키값을 모르는 경우
+      console.log(person2.name); // 유재석
+      console.log(person2["name"]); // 유재석
+
+      // 동적(실행시점, 런타임시점)으로 Object의 특정 키 값을 가져와야 할 때
+      let userSelectedField = "age";
+      let userSelectedValue = person2[userSelectedField];
+      console.log(userSelectedValue);
+    </script>
+  </body>
+</html>

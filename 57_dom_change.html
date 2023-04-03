@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="sel">출신 지역은?</label>
+    <select name="" id="sel"></select>
+    <br />
+    <h1 id="title">기본 타이틀입니다.</h1>
+    <br />
+
+    <!-- beforebegin -->
+    <ul id="myUL">
+      <!-- afterbegin -->
+      <li>에스프레소</li>
+      <li>아메리카노</li>
+      <li>카라멜마끼야또</li>
+      <li>오렌지주스</li>
+      <li>카페라떼</li>
+      <!-- beforeend -->
+    </ul>
+    <!-- afterend -->
+    <p id="p1">삭제할 대상 태그입니다.</p>
+    <script>
+      // DOM 요소를 변경하는 방법에 대해서 알아보려고 합니다.
+      // innerHTML - 특정 DOM 요소 안에 HTML을 전부 새로운 HTML로 변경하고 싶을 때
+      // 서버로 부터 지역 목록을 가져왔다고 가정
+      function setCities() {
+        const cities = [
+          { code: "02", text: "서울" },
+          { code: "051", text: "부산" },
+          { code: "064", text: "제주" },
+        ];
+
+        let optionsHTML = [];
+        for (const city of cities) {
+          optionsHTML.push(
+            `<option value="${city.code}">${city.text}</option>`
+          );
+        }
+
+        document.getElementById("sel").innerHTML = optionsHTML.join("");
+      }
+
+      // innerText - 특정 DOM 요소 안에 TEXT를 전부 새로운 TEXT로 변경하고 싶을 때
+      function setTitle(title = "") {
+        document.getElementById("title").innerText = title;
+      }
+
+      // insertAdjacentHTML()
+      // 파라미터 2개
+      // 첫번째 파라미터 - 추가하려는 위치
+      // afterbegin - 접근한 DOM 요소의 자식 노드의 제일 첫번째 노드로 삽입
+      // afterend - 접근한 DOM 요소 바로 다음 노드로 삽입
+      // beforebegin - 접근한 DOM 요소 바로 직전 노드로 삽입
+      // beforeend - 접근한 DOM 요소의 자식 노드의 제일 마지막 노드로 삽입.
+      // 두번째 파라미터 - 추가할 HTML 태그에 해당하는 문자열
+      function insertHTML(id, location, htmlStr) {
+        document.getElementById(id).insertAdjacentHTML(location, htmlStr);
+      }
+
+      // insertAdjacentText()
+      // 파라미터 2개
+      // 첫번째 파라미터 - 추가하려는 위치
+      // afterbegin - 접근한 DOM 요소의 자식 노드의 제일 첫번째 문자열 삽입
+      // afterend - 접근한 DOM 요소 바로 다음 문자열 삽입
+      // beforebegin - 접근한 DOM 요소 바로 직전 문자열 삽입
+      // beforeend - 접근한 DOM 요소의 자식 노드의 제일 마지막 문자열 삽입.
+      // 두번째 파라미터 - 추가할 문자열
+
+      // remove() - DOM 요소를 삭제할 수 있음
+      function removeElement(id) {
+        document.getElementById(id).remove();
+      }
+
+      window.addEventListener("load", function () {
+        setCities();
+        setTitle("변경된 타이틀입니다.");
+        insertHTML("myUL", "afterbegin", "<li>우유</li>");
+        insertHTML("myUL", "beforeend", "<li>요구르트</li>");
+        insertHTML(
+          "myUL",
+          "afterend",
+          "<p>UL 태그 다음에 삽입되는 P태그입니다.</p>"
+        );
+        insertHTML(
+          "myUL",
+          "beforebegin",
+          "<p>UL 태그 전에 삽입되는 P태그입니다.</p>"
+        );
+
+        setTimeout(function () {
+          removeElement("p1");
+        }, 5000);
+      });
+    </script>
+  </body>
+</html>

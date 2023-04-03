@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="date" id="startDate" /> ~
+    <input type="date" id="endDate" />
+    <button>조회</button>
+    <script>
+      // Date 객체
+      // 날짜 - 년,월,일,시,분,초,밀리초
+
+      let now = new Date(); // Date 객체 생성
+      console.log(now); // 로컬 컴퓨터에 설정된 날짜 기준으로 표기됨.
+
+      // year, month, day, hour, minute, second, millsecond
+      // 월은 1월 0, 2월 1
+      let d = new Date(2022, 3, 29, 19, 34, 20, 0);
+      console.log(d);
+
+      // get 함수
+      const year = now.getFullYear(); // 년도
+      console.log(year);
+      let month = now.getMonth(); // 월. 1월 0, 2월 1
+      console.log(month);
+      const day = now.getDate(); // 날짜
+      console.log(day);
+      const dayIndex = now.getDay(); // 요일. 일요일-0, 월요일-1
+      console.log(dayIndex);
+      const hour = now.getHours(); // 시간
+      const minute = now.getMinutes(); // 분
+      const second = now.getSeconds(); // 초
+      const millsecond = now.getMilliseconds(); // 밀리초
+
+      // set 함수
+      //   now.setFullYear(2021);
+      //   console.log(now);
+
+      // YYYY-MM-DD 2022-04-09
+      // YYYY.MM.DD
+
+      month = month + 1;
+      //   if(month < 10) month = "0" + month;
+      // padStart
+
+      const today =
+        year +
+        "-" +
+        month.toString().padStart(2, 0) +
+        "-" +
+        day.toString().padStart(2, 0);
+
+      console.log(today);
+      document.getElementById("endDate").value = today;
+
+      //   let before7days = new Date(year, now.getMonth(), now.getDate() - 7);
+      //   console.log(before7days);
+
+      let d2 = new Date(0);
+      console.log(d2); // 1970-01-01 시작.
+      // 1초 1000밀리초
+      // 하루 =  24 * 60 * 60 * 1000
+      console.log(new Date(24 * 60 * 60 * 1000));
+
+      function getIntervalDate(day) {
+        let now = new Date();
+        let dayMilliseconds = 60 * 60 * 24 * 1000;
+        let currentMilliseconds = now.getTime();
+        let intervalDate = currentMilliseconds + day * dayMilliseconds;
+        return new Date(intervalDate);
+      }
+
+      function getIntervalDateFormat(day, format) {
+        let now = new Date();
+        let dayMilliseconds = 60 * 60 * 24 * 1000;
+        let currentMilliseconds = now.getTime();
+        let intervalDate = currentMilliseconds + day * dayMilliseconds;
+        let d = new Date(intervalDate);
+        let year = d.getFullYear();
+        let month = (d.getMonth() + 1).toString().padStart(2, 0);
+        let date = d.getDate().toString().padStart(2, 0);
+        // YYYY-MM-DD
+        // YYYY.MM.DD
+        // MM.DD.YYYY
+        // replace()
+        return format
+          .replace("YYYY", year)
+          .replace("MM", month)
+          .replace("DD", date);
+        // 2022-MM-DD
+        // 2022-04-DD
+        // 2022-04-29
+      }
+
+      console.log(getIntervalDate(-7));
+      console.log(getIntervalDate(-30));
+      console.log(getIntervalDate(7));
+
+      const before7days = getIntervalDateFormat(-7, "YYYY-MM-DD");
+      document.getElementById("startDate").value = before7days;
+    </script>
+  </body>
+</html>

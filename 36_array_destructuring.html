@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function getScores() {
+        // 0 - 최하 점수
+        // 1 - 평균 점수
+        // 2 - 최대 점수
+        return [70, 80, 90];
+      }
+
+      let scores = getScores();
+      let minScore = scores[0];
+      let avgScore = scores[1];
+      let maxScore = scores[2];
+
+      // array destructuring
+      let [minScore2, avgScore2, maxScore2] = getScores();
+      console.log(minScore2);
+      console.log(avgScore2);
+      console.log(maxScore2);
+
+      //
+      function getGeoLocation(addr) {
+        // return {latitude:112.1234, longitude: 65.2334}
+        return [112.1234, 65.2334];
+      }
+
+      let geoLocation = getGeoLocation();
+      let [latitude, longitude] = getGeoLocation();
+      console.log(geoLocation[0]); // 위도
+      console.log(geoLocation[1]); // 경도
+      console.log(latitude); // 위도
+      console.log(longitude); // 경도
+    </script>
+  </body>
+</html>

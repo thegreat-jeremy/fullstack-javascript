@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 할당하는 시점에 그 크기가 고정인것 - 스택 메모리
+      // 크기가 유동적인 데이터 - 힙 메모리 (array, object)
+      const arr1 = [1, 2, 3, 4]; // 힙 메모리 블록1 arr1-주소값, 힙 메모리 블록2-주소값, 배열 값
+
+      const arr2 = arr1; // 힙 메모리 블록1 arr2-주소값
+
+      arr2.push(5); // [1,2,3,4,5]
+      console.log(arr1); // [1,2,3,4,5]
+      // 깊은 복사
+
+      // var a = {b:1, c:2}
+      // for(const key in a) {
+      //   console.log(a.key);
+      //   console.log(a[key]);
+      // }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function sum2(n1, n2) {
+        return n1 + n2;
+      }
+
+      console.log(sum2(5, 7));
+
+      function sum3(n1, n2, n3) {
+        return n1 + n2 + n3;
+      }
+
+      console.log(sum3(3, 7, 9));
+
+      function sum4(n1, n2, n3, n4) {
+        return n1 + n2 + n3 + n4;
+      }
+
+      console.log(sum4(4, 7, 3, 8));
+
+      function sum(arr) {
+        let total = 0;
+        for (const n of arr) {
+          total += n;
+        }
+
+        return total;
+      }
+
+      console.log(sum([3, 45, 1, 56, 7, 3, 9, 1]));
+
+      // rest parameter
+      function add(...nums) {
+        let total = 0;
+        for (const n of nums) {
+          total += n;
+        }
+
+        return total;
+      }
+
+      console.log(add(2, 3));
+      console.log(add(2, 3, 7));
+      console.log(add(2, 3, 7, 15));
+      console.log(add(2, 3, 7, 15, 22));
+      console.log(add(2, 3, 7, 15, 22, 35));
+    </script>
+  </body>
+</html>

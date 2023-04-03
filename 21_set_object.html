@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Set 객체 - 배열(Array)
+      // 좋아하는 음식을 단답형으로 입력하는 설문조사
+      // 사용자가 입력한 음식명을 배열에 저장
+      let foods = [
+        "햄버거",
+        "김치찌개",
+        "된장찌개",
+        "제육볶음",
+        "김치찌개",
+        "햄버거",
+      ];
+      // 유니크한 음식명만 별도의 배열에 저장하고 싶음.
+
+      let oFood = {};
+      // 오브젝트 특성은 키-값을 한쌍으로 가지고 있죠.
+      for (const food of foods) {
+        oFood[food] = "";
+      }
+
+      console.log(oFood);
+      let uniqueFoods = [];
+      for (const key in oFood) {
+        uniqueFoods.push(key);
+      }
+
+      console.log(uniqueFoods);
+
+      // Set 객체
+      // 배열처럼 데이터의 집합
+      // value 값으로 무조건 유일한 값만 유지
+      let foodSet = new Set();
+      foodSet.add("햄버거");
+      foodSet.add("김치찌개");
+      foodSet.add("된장찌개");
+      foodSet.add("제육볶음");
+      foodSet.add("김치찌개"); // 저장되지않아요.
+      foodSet.add("햄버거"); // 저장되지않아요.
+
+      foodSet.forEach(function (food) {
+        console.log(food);
+      });
+
+      // 배열에선 내가 찾고자 하는 데이터가 요소로 있는지 찾으려면 for문, if문을 사용.
+      for (const food of uniqueFoods) {
+        if (food === "김치찌개") {
+          console.log("김치찌개가 있네요.");
+        }
+      }
+
+      console.log(foodSet.has("김치찌개"));
+
+      // 특정 요소(데이터)를 삭제하고 싶을때
+      foodSet.delete("김치찌개"); // 김치찌개 삭제
+
+      //   foodSet.clear(); // 모두 삭제
+    </script>
+  </body>
+</html>

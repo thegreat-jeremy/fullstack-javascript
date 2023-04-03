@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* #userId {
+
+        }
+
+        .form-control {
+
+        } */
+
+      /* label {
+
+        } */
+    </style>
+  </head>
+  <body>
+    <div>
+      <label for="userId">사용자 ID</label>
+      <input type="text" name="" id="userId" class="form-control" />
+    </div>
+    <div>
+      <label for="userPass">비밀번호</label>
+      <input type="text" name="" id="userPass" class="form-control" />
+    </div>
+
+    <div>
+      <input type="checkbox" name="chk_pl" id="chk_html" value="HTML" />
+      <label for="chk_html">HTML</label>
+      <input type="checkbox" name="chk_pl" id="chk_css" value="CSS" />
+      <label for="chk_css">CSS</label>
+      <input type="checkbox" name="chk_pl" id="chk_js" value="JS" />
+      <label for="chk_js">JavaScript</label>
+    </div>
+    <button onclick="doSave();">저장</button>
+    <button onclick="doSave2();">저장2</button>
+    <script>
+      // 자바스크립트에서 DOM을 조작하는 방법
+      // 1. 자바스크립트에서 DOM 요소에 접근하는 방법
+      // id 값을 이용해서 DOM 요소 찾기
+      const userIdElement = document.getElementById("userId");
+      console.log(userIdElement);
+      const userIdElement2 = document.querySelector("#userId");
+      console.log(userIdElement2);
+
+      // 태그명을 이용해서 DOM 요소 찾기
+      const labelElements = document.getElementsByTagName("label");
+      console.log(labelElements);
+      const labelElements2 = document.querySelectorAll("label");
+      console.log(labelElements2);
+      // 클래스명을 이용해서 DOM 요소 찾기
+      const inputElements = document.getElementsByClassName("form-control");
+      console.log(inputElements);
+      const inputElements2 = document.querySelectorAll(".form-control");
+      console.log(inputElements2);
+
+      // name 속성 값을 이용해서 DOM 요소 찾기
+
+      function doSave() {
+        const chks = document.getElementsByName("chk_pl");
+        let checkedValue = [];
+        for (const chk of chks) {
+          if (chk.checked) {
+            checkedValue.push(chk.value);
+          }
+        }
+
+        console.log(checkedValue);
+      }
+
+      // CSS 선택자를 이용해서 DOM 요소 찾기
+      // querySelector
+      // querySelectorAll
+      function doSave2() {
+        const checkedElements = document.querySelectorAll(
+          "[name=chk_pl]:checked"
+        );
+        console.log(checkedElements);
+        let checkedValue = [];
+        for (const chk of checkedElements) {
+          checkedValue.push(chk.value);
+        }
+        console.log(checkedValue);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 데이터 기본 타입
+
+      // 1. 문자열(String) - String 객체
+      // 쌍따옴표, 혹은 홑 따옴표를 이용해서 데이터를 할당
+      let name1 = "John Doe"; // String 객체
+      //   let name2 = 'John Doe'; // String 객체
+
+      let str1 = '그는 "존"이라고 합니다.';
+      let str2 = "그는 '존'이라고 합니다.";
+
+      //   let str3 = "그는 \"존\"이라고 합니다.";
+      //   let str4 = '그는 \'존\'이라고 합니다.';
+
+      // 코딩 컨벤션 - 코딩 규칙
+
+      let firstName = "John";
+      let lastName = "Doe";
+      let fullName = firstName + " " + lastName;
+      console.log(fullName);
+
+      // 2. 숫자형(Number) - Number 객체
+      // 자바스크립트는 모든 숫자형 데이터를 64비트 부동소수점으로 관리
+      let num1 = 13; // 정수
+      let num2 = 3.15; // 소수점을 갖는 수
+      // 자바 - 다양한 숫자 타입, integer, short, long, decimal, float, double
+
+      // 3. Boolean (참/거짓)
+      // Boolean 객체
+      // 2개의 값만 가질 수 있음: 참-true, 거짓-false
+      let userInputAge = 17;
+      let adultAge = 20;
+      let isAdult = userInputAge >= adultAge;
+      console.log(isAdult);
+
+      // 4. undefined
+      // 정의되지 않았다. 값을 할당하지 않았다.
+      // undefined는 데이터 타입이자 동시에 데이터 값.
+      // 실행되는 시점. 런타임 시점에 브라우저 엔진이 자동으로 undefined라는 값을 할당.
+      let a;
+      console.log(a);
+
+      // 5. null
+      // "없음"을 의미.
+      // null은 개발자가 의도적으로 할당하는 값
+      // 변수를 선언하는 시점에는 아직 어떤 값이 할당될지 모르는 경우
+      // 어떤 데이터 타입으로 할당될지 모르는 경우
+      let x = null;
+
+      // 메모리를 효율을 위해서 null 사용함
+      let y = "굉장히 사이즈가 큰 데이터";
+      y = null;
+      // 가비지 컬렉션 - 더이상 사용하지 않는 메모리를 해제
+
+      // 6. symbol
+      // ES6 추가 - 실무에서 거의 사용 안함.
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="str" onblur="myFunction()" />
+    <span id="strMsg" style="display: none; color: red"
+      >필수 입력 값입니다.</span
+    >
+    <script>
+      // blur - 포커스가 빠져나올때
+      function myFunction() {
+        console.log("blur 이벤트");
+        if (document.getElementById("str").value === "") {
+          //   alert("필수 입력 값입니다.");
+          document.getElementById("strMsg").style.display = "";
+          document.getElementById("str").focus();
+        } else {
+          document.getElementById("strMsg").style.display = "none";
+        }
+      }
+    </script>
+  </body>
+</html>

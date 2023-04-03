@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./js/object_func.js"></script>
+    <script>
+      let str = "Hello World";
+      console.log(str.length);
+
+      str = "Welcome Seoul";
+      // indexOf(찾고자 하는 문자열) - 그 문자열이 시작되는 인덱스 번호를 반환
+      console.log(str.indexOf("l")); //2
+      console.log(str.indexOf("Seoul")); //8
+      // 만약에 찾고자 하는 문자열이 없으면, -1 반환
+      console.log(str.indexOf("Jeju"));
+      // 전화번호를 입력 받는데, 전화번호 입력 규칙은 하이픈(-)을 제외하고 입력.
+      let tel = "010-0000-0000";
+      let tel2 = "01000000000"; // 통과
+      if (tel.indexOf("-") > -1) {
+        console.log(
+          "전화번호에는 하이픈(-)을 포함하면 안됩니다. 하이픈을 제외하고 입력하세요."
+        );
+      }
+
+      // lastIndexOf(찾고자 하는 문자열) - 마지막 인덱스 번호
+      console.log(str.lastIndexOf("l")); //12
+
+      console.log(str.indexOf("l", 5)); // 두번째 문자열을 찾을 시작 인덱스 위치
+
+      // slice() - 문자열을 시작위치, 종료위치 두개의 파라미터를 사용해서 문자열에서 특정 부분을 잘라내서 반환
+      console.log(str.slice(8, 13)); // 시작위치, 종료위치
+      console.log(str.slice(8)); // 시작위치부터 끝까지
+      console.log(str.slice(str.indexOf("Seoul")));
+      // 시작위치, 종료위치 값으로 음수도 사용할 수 있음.
+      console.log(str.slice(-5)); // 시작위치가 문자열 끝에서 거꾸로 5번째
+      console.log(str.slice(-5, -1));
+
+      // slice, substring, substr
+      // substring() - 시작위치, 종료위치 두개의 파라미터를 문자열을 잘라내서 반환
+      // substring() 파라미터로 음수값을 사용할 수 없음
+      console.log(str.substring(8, 13));
+      console.log(str.substring(8));
+
+      // substr() - 시작위치, 잘라낼 길이
+      // 잘라낼 길이를 명확히 아는 경우
+      console.log(str.substr(8, 5));
+      let date = "20220422";
+      let year = date.slice(0, 4); // 2022
+      year = date.substring(0, 4); // 2022
+      year = date.substr(0, 4); // 2022
+      let month = date.slice(4, 6);
+      month = date.substr(4, 2);
+
+      const percent = 1234.5;
+      const format1 = "#,###.#";
+      const format2 = "#,###.#%"; // 1,234%
+
+      console.log(date.slice(-2));
+
+      if (format1.slice(-1) !== "#") {
+      }
+
+      // replace(문자열1, 문자열2) - 문자열에서 문자열1을 찾아서 문자열2로 교체
+      str = "Welcome Jeju! Jeju! jeju!";
+      console.log(str.replace("Jeju", "Seoul"));
+
+      // 자바스크립트 정규식
+      console.log(str.replace(/Jeju/gi, "Seoul"));
+
+      // toUpperCase() - 모든 알파벳을 대문자로 변환
+      console.log(str.toUpperCase());
+
+      // toLowerCase() - 모든 알파벳을 소문자로 변환
+      console.log(str.toLowerCase());
+
+      // 제품번호 다 대문자...
+      // 데이터베이스 대문자..
+      // 제품번호를 제품을 조회하는 화면
+      // P102M234
+      // p102m234
+      // "p102m234".toUpperCase()
+      // John Doe
+      // 고객 정보를 검색하는 화면
+      // john JOHN - "john".toLowerCase()
+      // Lower(Name)
+
+      // concat() - 여러 문자열을 하나로 결합할 때
+      // +
+      let firstName = "John";
+      let lastName = "Doe";
+      let fullName = firstName + " " + lastName;
+      fullName = firstName.concat(" ", lastName);
+      console.log(fullName);
+
+      // trim() - 문자열의 앞/뒤 공백을 모두 제거
+      let name = "  개발자의 품격      ";
+      console.log(name);
+      console.log(name.trim());
+      console.log(name.$removeSpace());
+
+      let keyword = " john";
+      //   keyword.trim()
+
+      // padStart() - 두개의 파라미터.
+      // 첫번째 파라미터 - 길이
+      // 두번째 파라미터 - 채울 문자
+      // "ST" 4, "A" -> AAST
+      // 첫번째 파라미터로 전달 받은 길이 만큼 문자열의 앞에 두번째 파라미터로 전달 받은 문자로 채움.
+      // 대학교 학번
+      // 8자리 - 2자리(년도) + 2자리(학과번호) + 4자리(이름 가나다 순번에 대한 순서)
+      // 22460125
+      // 7 - 0007 : 22460007
+      // 14, 110
+      // while
+      let universityNo = "21";
+      // while (universityNo.length < 4) {
+      //   universityNo = "0" + universityNo;
+      // }
+
+      // console.log(universityNo);
+      console.log(universityNo.padStart(4, "0"));
+      // 2022-04-25
+      month = 11;
+      console.log(month.toString().padStart(2, "0"));
+
+      // padEnd()
+      // 첫번째 파라미터 - 길이
+      // 두번째 파라미터 - 채울 문자
+      // 문자열 뒤에 두번째 파라미터로 전달 받은 문자로 채움
+      console.log("A".padEnd(6, "0"));
+
+      // charAt()
+      // 첫번째 파라미터 - 인덱스 번호
+      // 문자열에서 인덱스 번호에 해당하는 문자 하나를 반환
+
+      str = "A0001";
+      console.log(str.charAt(0));
+      // 시스템을 사용하는 사용자 아이디를 만들때.
+      // 관리자 권한 - ADMIN
+      // 매니저 권한 - Manager
+      // 일반 권한 - General
+
+      // charCodeAt() - 인덱스번호에 맞는 하나의 문자를 반환
+      // 문자를 유니코드로 변환해서 반환.
+      // 유니코드는 전 세계의 모든 문자를 컴퓨터에서 일관되게 표현하고 다룰 수 있게 설계된 산업 표준
+      // 인코딩 - utf-8
+      console.log(str.charCodeAt(0));
+
+      // split()
+      // 파라미터로 전달 받은 문자열로 변수에 할당된 문자를 나눠서 배열로 반환한다.
+      let to = "john@gmail.com,jane@gmail.com,hong@gmail.com";
+      let tags = "#개발자의품격#웹개발#부트캠프";
+      let emails = to.split(",");
+      console.log(emails);
+      console.log(tags.split("#"));
+
+      date = "2022-04-25";
+      console.log(date.split("-"));
+      let dates = date.split("-");
+      year = dates[0];
+      month = dates[1];
+      day = dates[2];
+
+      // startsWith() - 파라미터로 전달받은 문자열로 시작하는지에 대해서 boolean 값을 반환
+      let url = "htt://website.com";
+      console.log(url.startsWith("http://"));
+
+      // endsWith() - 파라미터로 전달받은 문자열로 끝나는지에 대해서 boolean 값을 반환
+      let file = "abc.pdf";
+      console.log(file.endsWith(".pdf"));
+    </script>
+  </body>
+</html>

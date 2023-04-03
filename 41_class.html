@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // class
+      // 붕어빵 - 철로 되어 있는 붕어빵 모양의 틀, 밀가루 반죽이랑, 팥을 넣고 붕어빵
+      // 클래스 - 틀, 설계도
+      // 자동차
+      // 자동차 모델명, 생산년도, 타입, 가격
+
+      // const oCar = {
+      //     modelName: "",
+      //     modelYear: "",
+      //     constructor: function(){
+      //         this.
+      //     }
+      // }
+
+      class Car {
+        constructor(modelName, modelYear, type, price) {
+          this.modelName = modelName;
+          this.modelYear = modelYear;
+          this.type = type;
+          this.price = price;
+        }
+
+        getModelName() {
+          return this.modelName;
+        }
+
+        getModelYear() {
+          return this.modelYear;
+        }
+
+        getType() {
+          return this.type;
+        }
+
+        getPrice() {
+          return this.price;
+        }
+
+        setModelName(modelName) {
+          this.modelName = modelName;
+        }
+
+        setModelYear(modelYear) {
+          this.modelYear = modelYear;
+        }
+
+        setType(type) {
+          this.type = type;
+        }
+
+        setPrice(price) {
+          this.price = price;
+        }
+      }
+
+      const sonata = new Car("소나타", "2022", "G", 35000000);
+      console.log(sonata.getModelName());
+      console.log(sonata.getPrice());
+      sonata.setPrice(36000000);
+      console.log(sonata.getPrice());
+
+      const avante = new Car("아반떼", "2022", "D", 27000000);
+      console.log(avante.getModelName());
+
+      // 상속 개념
+
+      class ElectricCar extends Car {
+        constructor(modelName, modelYear, type, price, chargingTime, distance) {
+          super(modelName, modelYear, type, price);
+          this.chargingTime = chargingTime;
+          this.distance = distance;
+        }
+
+        getChargingTime() {
+          return this.chargingTime;
+        }
+
+        getDistance() {
+          return this.distance;
+        }
+
+        setChargingTime(chargingTime) {
+          this.chargingTime = chargingTime;
+        }
+
+        setDistance(distance) {
+          this.distance = distance;
+        }
+      }
+
+      const ionic = new ElectricCar("아이오닉", 2022, "E", 40000000, 120, 450);
+      console.log(ionic.getModelName());
+    </script>
+  </body>
+</html>

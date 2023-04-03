@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // while문은 조건식을 만족하는 동안 코드 블록을 실행함.
+      // while문 안에 while문을 종료할 수 있는 코드가 반드시 존재 해야 함.
+      let i = 1;
+      while (i <= 10) {
+        console.log("number: ", i);
+        i++;
+      }
+
+      // do-while문
+      // 무조건 한번은 코드 블록을 실행하고, 그 다음 조건식을 체크 함.
+      i = 11;
+      do {
+        console.log("number: ", i);
+        i++;
+      } while (i <= 10);
+
+      // while문은 몇번을 돌려야 할지 모를 때 주로 많이 사용됨.
+      // 동전교환기
+      let inputCoin = 7000;
+      let coinUnit = 500;
+      let coinCount = 0;
+
+      console.log("고객이 넣은 금액", inputCoin);
+
+      while (inputCoin > 0) {
+        inputCoin = inputCoin - coinUnit;
+        coinCount++;
+      }
+
+      console.log("교환 동전 유닛", coinUnit);
+      console.log("교환 동전 개수", coinCount);
+    </script>
+  </body>
+</html>

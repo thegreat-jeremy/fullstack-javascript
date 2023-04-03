@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="https://naver.com" target="_blank">네이버</a>
+    <button onclick="openNaver();">네이버</button>
+    <script>
+      // window 객체
+
+      //   alert("이것은 경고입니다.");
+
+      function doDelete() {
+        const pass = prompt("비밀번호를 입력하셔야 삭제가 진행됩니다.");
+        if (pass === "1234") {
+          if (confirm("정말 삭제 하시겠습니까?")) {
+            console.log("삭제 되었습니다.");
+          }
+        } else {
+          alert("비밀번호가 틀립니다.");
+        }
+      }
+
+      //   doDelete();
+
+      function openNaver() {
+        window.open("https://naver.com");
+      }
+
+      const myFunc = setTimeout(function () {
+        console.log("3초 후에 출력됩니다.");
+      }, 3000);
+
+      //   clearTimeout(myFunc)
+
+      const myFunc2 = setInterval(function () {
+        console.log("1초 마다 출력됩니다.");
+      }, 1000);
+
+      //   clearInterval(myFunc2)
+    </script>
+  </body>
+</html>

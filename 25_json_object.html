@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // JSON (Javascript Object Notation)
+      // 데이터를 저장하거나 전송할 때 많이 사용되는 데이터 교환 형식.
+      // 데이터 포맷
+      // 클라이언트랑 서버간의 데이터를 전송할 때. 가장 많이 사용하는 데이터 포맷.
+      // 자바스크립트에서 Object 객체 데이터 저장할때의 표기법과 매우 유사
+      // 프로그래밍 언어에 상관없이 사용할 수 있는 데이터 교환 형식
+      // 대부분의 프로그래밍 언어에서 JSON 데이터를 처리할 수 있는 라이브러를 제공해 줌.
+
+      let person = {
+        name: "홍길동",
+        age: 22,
+        tel: "010-0000-0000",
+        address: "서울시",
+        email: "hong@gmail.com",
+        obj: {},
+        arr: [],
+      };
+
+      let arr = [3, 4, 5, 9];
+
+      // JSON 객체
+      // stringify() - 자바스크립트 오브젝트, 혹은 배열 같은 데이터를 문자열로 변환
+      console.log(person);
+      // 클라이언트에서 서버로 전송할 때는
+      // 이렇게 stringify 함수를 사용해서 JSON 데이터 포맷에 해당하는 문자열로 변환해서 서버로 전송
+      const strPerson = JSON.stringify(person);
+      console.log(strPerson);
+      //   '{"name":"홍길동","age":22,"tel":"010-0000-0000","address":"서울시","email":"hong@gmail.com","obj":{},"arr":[]}'
+
+      // 서버에서 클라이언트로 JSON 포맷으로 데이터가 전송되었을 때
+      // 문자열
+      // parse() - 문자열로 되어 있는 JSON 포맷을 자바스크립트 오브젝트로 변환을 해줘요.
+      const oPerson = JSON.parse(strPerson);
+      console.log(oPerson);
+
+      //   {
+      //     "name": "홍길동",
+      //     "age": 22,
+      //     "tel": "010-0000-0000",
+      //     "address": "서울시",
+      //     "email": "hong@gmail.com",
+      //     "obj": {},
+      //     "arr": []
+      //   }
+    </script>
+  </body>
+</html>

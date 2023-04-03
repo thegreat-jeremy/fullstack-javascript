@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .col-4 {
+        flex: 33.3333%;
+        margin-bottom: 10px;
+      }
+
+      .col-8 {
+        flex: 66.6666%;
+        margin-bottom: 10px;
+      }
+
+      .alert {
+        color: red;
+      }
+
+      input.form-control {
+        width: 100%;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-4">
+        <label for="name">Name</label>
+      </div>
+      <div class="col-8"><span id="name"></span></div>
+      <div class="col-4">
+        <label for="name">Gender</label>
+      </div>
+      <div class="col-8"><span id="gender"></span></div>
+      <div class="col-4">
+        <label for="company">Company</label>
+      </div>
+      <div class="col-8"><span id="company"></span></div>
+      <div class="col-4">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-8"><span id="email"></span></div>
+      <div class="col-4">
+        <label for="phone">Phone</label>
+      </div>
+      <div class="col-8"><span id="phone"></span></div>
+      <div class="col-4">
+        <label for="address">Address</label>
+      </div>
+      <div class="col-8"><span id="address"></span></div>
+      <div>
+        <button onclick="goToUpdate();">수정</button>
+        <button onclick="goToList();">목록</button>
+      </div>
+    </div>
+    <script src="./js/common.js"></script>
+    <script>
+      // queryString
+      //   console.log(window.location.search);
+
+      async function doSearchDetail() {
+        const { id } = parseQueryString();
+        const res = await fetch(`http://localhost:3000/customers/${id}`);
+        const resJson = await res.json();
+        console.log(resJson);
+        renderDetail(resJson);
+      }
+
+      function renderDetail(data) {
+        document.querySelector("#name").innerText = data.name;
+        document.querySelector("#gender").innerText = data.gender;
+        document.querySelector("#company").innerText = data.company;
+        document.querySelector("#email").innerText = data.email;
+        document.querySelector("#phone").innerText = data.phone;
+        document.querySelector("#address").innerText = data.address;
+      }
+
+      function goToList() {
+        document.location.href = "59_dom_crud_list.html";
+      }
+
+      function goToUpdate() {
+        const { id } = parseQueryString();
+        document.location.href = `62_dom_crud_update.html?id=${id}`;
+      }
+
+      doSearchDetail();
+    </script>
+  </body>
+</html>

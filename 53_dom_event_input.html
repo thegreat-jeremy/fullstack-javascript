@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <label for="number">숫자만 입력 가능한 필드</label>
+      <input type="text" name="" id="number" oninput="onlyNumber();" />
+    </div>
+    <div>
+      <label for="lowercase">소문자만 입력 가능한 필드</label>
+      <input type="text" name="" id="lowercase" oninput="onlyLowercase();" />
+    </div>
+    <div>
+      <label for="uppercase">대문자만 입력 가능한 필드</label>
+      <input type="text" name="" id="uppercase" oninput="onlyUppercase();" />
+    </div>
+    <div>
+      <label for="korean">한글만 입력 가능한 필드</label>
+      <input type="text" name="" id="korean" oninput="onlyKorean();" />
+    </div>
+    <script>
+      // keydown -> keypress -> keyup
+      // input 이벤트가 추가가 됨.
+      // keydonw -> keypress -> input -> keyup
+      // keyup 이벤트 일어나는 순간에 value 속성 값에 값이 들어감. 사용자 눈에 보이게 됨.
+      // input 이벤트 일어나는 순간에 value 속성 값에 값이 들어감. 그런데 화면에는 보이지 않음. 사용자 눈에는 안 보임.
+      function onlyNumber() {
+        const regexp = /\D/g; // 숫자가 아닌 모든 문자를 모두 찾아라
+        console.log(event.target.value);
+        event.target.value = event.target.value.replace(regexp, "");
+      }
+
+      function onlyLowercase() {
+        const regexp = /[^a-z]/g; // 소문자가 아닌 모든 문자를 모두 찾아라
+        console.log(event.target.value);
+        event.target.value = event.target.value.replace(regexp, "");
+      }
+
+      function onlyUppercase() {
+        const regexp = /[^A-Z]/g; // 대문자가 아닌 모든 문자를 모두 찾아라
+        console.log(event.target.value);
+        event.target.value = event.target.value.replace(regexp, "");
+      }
+
+      function onlyKorean() {
+        const regexp = /[^ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g; // 한글이 아닌 모든 문자 찾기
+        console.log(event.target.value);
+        event.target.value = event.target.value.replace(regexp, "");
+      }
+    </script>
+  </body>
+</html>

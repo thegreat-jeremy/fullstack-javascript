@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 반복문
+      // 특정 코드 블록을 정해진 횟수 만큼 반복해서 실행되게 만드는것을 반복문이라고 함.
+      let brands = ["애플", "구글", "아마존", "마이크로소프트", "메타"];
+      //   console.log(brands[0]);
+      //   console.log(brands[1]);
+      //   console.log(brands[2]);
+      //   console.log(brands[3]);
+      //   console.log(brands[4]);
+
+      // Array Object
+
+      // 반복문 for loop 형식
+      //   for (statement1 ; statement2 ; statement3) {
+      //       // 실행될 코드
+      //   }
+
+      // statement1 - for-loop문 실행할때 무조건 딱 한번 실행
+      // statement2 - 코드 블록을 실행시킬 조건절
+      // statement3 - 코드 블록을 실행한 후 실행되는 코드
+
+      const length = brands.length; // 5
+      for (let i = 0; i < length; i++) {
+        // i = 0, 0 < 5
+        // 애플
+        // i = 1, 1 < 5
+        // 구글
+        // i =2, 2 < 5
+        // 아마존
+        // i=3, 3<5
+        // 마이크로소프트
+        // i=4, 4<5
+        // 메타
+        // i5, 5<5
+        // console.log(brands[i]);
+      }
+
+      const drinkList = [
+        {
+          name: "오렌지",
+          price: 1000,
+        },
+        {
+          name: "파워레이드",
+          price: 1400,
+        },
+        {
+          name: "커피",
+          price: 700,
+        },
+        {
+          name: "보리음료",
+          price: 1200,
+        },
+        {
+          name: "코카콜라",
+          price: 1000,
+        },
+      ];
+
+      const inputCoin = 1000;
+      const drinkLength = drinkList.length;
+      const availableDrinks = [];
+      for (let i = 0; i < drinkLength; i++) {
+        let drink = drinkList[i];
+        if (inputCoin >= drink.price) {
+          //   console.log(drink.name);
+          availableDrinks.push(drink);
+        }
+      }
+
+      //   console.log(availableDrinks);
+
+      // break
+      //   for (let i = 0; i < 10; i++) {
+      //     if (i === 5) {
+      //       break; // break를 만나면 for문 종료
+      //     }
+      //     console.log(i);
+      //   }
+
+      // continue
+      for (let i = 0; i < 10; i++) {
+        if (i === 5) {
+          continue; // continue를 만나면 statement3로 바로 이동.
+        }
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>

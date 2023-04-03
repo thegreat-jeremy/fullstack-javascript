@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" name="" id="email" required />
+      </div>
+      <div>
+        <label for="pw">비밀번호</label>
+        <input type="password" name="" id="pw" required />
+      </div>
+      <button type="submit">로그인</button>
+    </form>
+    <br />
+    <form action="" onsubmit="login();">
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" name="" id="email2" required />
+      </div>
+      <div>
+        <label for="pw">비밀번호</label>
+        <input type="password" name="" id="pw2" required />
+      </div>
+      <div>
+        <label for="pw">전화번호</label>
+        <input
+          type="tel"
+          name=""
+          id="tel"
+          pattern="^010-\d{4}-\d{4}$"
+          required
+        />
+      </div>
+      <button type="submit">로그인</button>
+    </form>
+    <br />
+    <div>
+      <div>
+        <label for="email">이메일</label>
+        <input type="email" name="" id="email3" required />
+      </div>
+      <div>
+        <label for="pw">비밀번호</label>
+        <input
+          type="password"
+          name=""
+          id="pw3"
+          oninvalid="this.setCustomValidity('비밀번호를 입력하세요.')"
+          required
+        />
+      </div>
+      <button onclick="login2();">로그인</button>
+    </div>
+
+    <script>
+      // 사용자가 입력한 값이 올바른지 체크하는 방법 - 별도의 자바스크립 구현 없이
+      function login() {
+        event.preventDefault(); // 이벤트의 기본 기능 중지
+        const email = document.querySelector("#email2").value;
+        const pw = document.querySelector("#pw2").value;
+
+        // 비동기 방식으로 서버로 로그인 정보를 전송해서 로그인 처리
+        // fetch()
+        // 결과 처리 코드 구현
+      }
+
+      function login2() {
+        const email = document.querySelector("#email3");
+        const pw = document.querySelector("#pw3");
+
+        // checkValidity()
+        if (!email.checkValidity()) {
+          return alert(email.validationMessage);
+        }
+
+        if (!pw.checkValidity()) {
+          return alert(pw.validationMessage);
+        }
+      }
+    </script>
+  </body>
+</html>

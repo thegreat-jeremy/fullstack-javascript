@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name=""
+      id=""
+      onkeydown="myFunction()"
+      onkeypress="myFunction()"
+      onkeyup="myFunction()"
+    />
+    <br />
+    <input type="text" name="" id="id1" onkeyup="moveNext();" />-<input
+      type="text"
+      name=""
+      id="id2"
+    />
+    <br />
+    <input type="text" name="" id="" onkeypress="onlyNumber();" />
+    <script>
+      // 키패드 관련 이벤트는
+      // keydown -> keypress -> keyup
+      function myFunction() {
+        console.log(event.type);
+        // console.log(event.target);
+        // keyup 이벤트 시점에 사용자가 입력한 값이 value 속성에 들어 감
+        console.log(event.target.value);
+      }
+
+      function moveNext() {
+        if (event.target.value.length === 6) {
+          document.querySelector("#id2").focus();
+        }
+      }
+
+      function onlyNumber() {
+        console.log(event.keyCode);
+        // 0 - 48
+        // 9 - 57
+        if (event.keyCode >= 48 && event.keyCode <= 57) {
+        } else {
+          event.preventDefault(); // 이벤트 중지 시킴
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="sel" onchange="doChange();">
+      <option value="KO">Korea</option>
+      <option value="CN">China</option>
+      <option value="JP">Japan</option>
+    </select>
+    <div>
+      <input
+        type="checkbox"
+        name=""
+        id="chkAgreement"
+        onchange="doChange2();"
+      />
+      <label for="chkAgreement">동의합니다</label>
+    </div>
+    <script>
+      // change
+      function doChange() {
+        console.log(document.querySelector("#sel").value);
+      }
+
+      function doChange2() {
+        console.log(document.querySelector("#chkAgreement").checked);
+      }
+    </script>
+  </body>
+</html>

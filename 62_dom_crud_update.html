@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .col-4 {
+        flex: 33.3333%;
+        margin-bottom: 10px;
+      }
+
+      .col-8 {
+        flex: 66.6666%;
+        margin-bottom: 10px;
+      }
+
+      .alert {
+        color: red;
+      }
+
+      input.form-control {
+        width: 100%;
+        padding: 5px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-4">
+        <label for="name">Name</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          name=""
+          id="name"
+          class="form-control"
+          onkeyup="checkEnter('company')"
+        />
+      </div>
+      <div class="col-4">
+        <label for="name">Gender</label>
+      </div>
+      <div class="col-8">
+        <input type="radio" name="gender" id="male" value="male" checked />
+        <label for="male">남자</label>
+        <input type="radio" name="gender" id="female" value="female" />
+        <label for="female">여자</label>
+      </div>
+      <div class="col-4">
+        <label for="company">Company</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="text"
+          name=""
+          id="company"
+          class="form-control"
+          onkeyup="checkEnter('email')"
+        />
+      </div>
+      <div class="col-4">
+        <label for="email">Email</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="email"
+          name=""
+          id="email"
+          class="form-control"
+          onblur="checkEmail();"
+          onkeyup="checkEnter('phone')"
+        />
+        <div id="emailMsg" class="alert" style="display: none">
+          올바른 형식의 이메일을 입력하세요.
+        </div>
+      </div>
+      <div class="col-4">
+        <label for="phone">Phone</label>
+      </div>
+      <div class="col-8">
+        <input
+          type="tel"
+          name=""
+          id="phone"
+          class="form-control"
+          onblur="checkPhone();"
+          onkeyup="checkEnter('btnDaumAPI')"
+        />
+        <div id="phoneMsg" class="alert" style="display: none">
+          올바른 형식의 전화번호를 입력하세요.
+        </div>
+      </div>
+      <div class="col-4">
+        <label for="address">Address</label>
+      </div>
+      <div class="col-8">
+        <button id="btnDaumAPI" onclick="openDaumAPI();">주소찾기</button>
+        <input type="text" name="" id="zonecode" style="width: 80px" readonly />
+        <input type="text" name="" id="address" class="form-control" readonly />
+        <input
+          type="text"
+          name=""
+          id="address2"
+          class="form-control"
+          placeholder="상세주소"
+          onkeyup="checkEnter('create')"
+        />
+      </div>
+      <div>
+        <button onclick="doSave();">저장</button>
+        <button onclick="goToList();">목록</button>
+      </div>
+    </div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="./js/common.js"></script>
+    <script>
+      async function doSearchDetail() {
+        const { id } = parseQueryString();
+        const res = await fetch(`http://localhost:3000/customers/${id}`);
+        const resJson = await res.json();
+        console.log(resJson);
+        renderDetail(resJson);
+      }
+
+      function renderDetail(data) {
+        document.querySelector("#name").value = data.name;
+        document.querySelector("#" + data.gender).checked = true;
+        document.querySelector("#company").value = data.company;
+        document.querySelector("#email").value = data.email;
+        document.querySelector("#phone").value = data.phone;
+        document.querySelector("#address").value = data.roadAddress;
+        document.querySelector("#address2").value = data.address2;
+        document.querySelector("#zonecode").value = data.zonecode;
+      }
+
+      doSearchDetail();
+
+      async function doSave() {
+        const name = document.querySelector("#name").value.trim();
+        const gender = document.querySelector("[name=gender]:checked").value;
+        const company = document.querySelector("#company").value.trim();
+        const email = document.querySelector("#email").value.trim();
+        const phone = document.querySelector("#phone").value.trim();
+        const address = document.querySelector("#address").value.trim();
+
+        console.log(name);
+        console.log(gender);
+        console.log(company);
+        console.log(email);
+        console.log(phone);
+        console.log(address);
+
+        if (name === "") {
+          return alert("Name을 입력하세요.");
+        }
+
+        if (company === "") {
+          return alert("Company를 입력하세요.");
+        }
+
+        const regexpEmail =
+          /^([a-z]+\d*)+(\.?[a-z]+\d*)+@([a-z]+\d*)+(\.[a-z]{2,3})+$/;
+        if (!regexpEmail.test(email)) {
+          return alert("올바른 형식의 Email을 입력하세요.");
+        }
+
+        const regexpTel = /^010-\d{4}-\d{4}$/;
+        if (!regexpTel.test(phone)) {
+          return alert("올바른 형식의 Phone을 입력하세요.");
+        }
+
+        if (address === "") {
+          return alert("Address를 입력하세요.");
+        }
+
+        const zonecode = document.querySelector("#zonecode").value;
+        const address2 = document.querySelector("#address2").value;
+
+        const { id } = parseQueryString();
+
+        if (confirm("정말 저장하시겠습니까?")) {
+          const res = await fetch(`http://localhost:3000/customers/${id}`, {
+            method: "PUT",
+            body: JSON.stringify({
+              name,
+              gender,
+              company,
+              email,
+              phone,
+              address: `(${zonecode})${address} ${address2}`.trim(),
+              zonecode: zonecode,
+              roadAddress: address,
+              address2: address2,
+            }),
+            headers: {
+              "content-type": "application/json;charset=UTF-8",
+            },
+          });
+
+          if (res.status === 200) {
+            alert("정상적으로 저장되었습니다.");
+          } else {
+            alert("고객 정보를 저장하지 못했습니다. 다시 시도하세요.");
+          }
+        }
+      }
+
+      function checkEmail() {
+        const email = document.querySelector("#email").value;
+        if (email !== "") {
+          const regexpEmail =
+            /^([a-z]+\d*)+(\.?[a-z]+\d*)+@([a-z]+\d*)+(\.[a-z]{2,3})+$/;
+          if (!regexpEmail.test(email)) {
+            document.querySelector("#emailMsg").style.display = "";
+          } else {
+            document.querySelector("#emailMsg").style.display = "none";
+          }
+        } else {
+          document.querySelector("#emailMsg").style.display = "none";
+        }
+      }
+
+      function checkPhone() {
+        const phone = document.querySelector("#phone").value;
+        if (phone !== "") {
+          const regexpTel = /^010-\d{4}-\d{4}$/;
+          if (!regexpTel.test(phone)) {
+            document.querySelector("#phoneMsg").style.display = "";
+          } else {
+            document.querySelector("#phoneMsg").style.display = "none";
+          }
+        } else {
+          document.querySelector("#phoneMsg").style.display = "none";
+        }
+      }
+
+      function openDaumAPI() {
+        new daum.Postcode({
+          oncomplete: function (data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+            console.log(data);
+            document.querySelector("#zonecode").value = data.zonecode;
+            document.querySelector("#address").value = data.roadAddress;
+          },
+        }).open();
+      }
+
+      function checkEnter(moveId) {
+        if (event.keyCode === 13) {
+          if (moveId === "btnDaumAPI") {
+            openDaumAPI();
+          } else if (moveId === "create") {
+            doCreate();
+          } else {
+            document.querySelector("#" + moveId).focus();
+          }
+        }
+      }
+
+      function goToList() {
+        document.location.href = "59_dom_crud_list.html";
+      }
+    </script>
+  </body>
+</html>

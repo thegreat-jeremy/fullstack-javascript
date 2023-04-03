@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="getPostData();">조회</button>
+    <button onclick="getPostNCommentData();">조회2</button>
+    <button onclick="getData();">조회3</button>
+    <script>
+      function getPostData() {
+        fetch("http://localhost:3000/posts")
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+
+        console.log("ABC");
+      }
+
+      function getPostNCommentData() {
+        fetch("http://localhost:3000/posts")
+          .then((response) => response.json())
+          .then((json) => {
+            fetch("http://localhost:3000/comments")
+              .then((response2) => response2.json())
+              .then((json2) => {
+                console.log(json2);
+              });
+          });
+      }
+
+      // async / await
+      async function getData() {
+        const response = await fetch("http://localhost:3000/posts");
+        const json = await response.json();
+
+        const response2 = await fetch("http://localhost:3000/comments");
+        const json2 = await response2.json();
+
+        console.log(json2);
+
+        //
+      }
+    </script>
+  </body>
+</html>

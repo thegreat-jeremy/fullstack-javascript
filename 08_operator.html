@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 연산자 : 할당 연산자, 비교 연산자, 산술 연산자, 논리 연산자, 문자열 연산자, 조건 삼항 연산자
+      // 1. 할당 연산자
+      // 할당 연산자는 오른쪽 피연산자의 값을 왼쪽 연산자에 할당하는 것
+      // 일반적으로 등호 = 을 사용 함.
+      let x = 1; // x는 1
+      let y = x; // y에 x를 할당. x가 1이기 때문에 y도 1이 됨.
+      x = x + y; // x=1, y=1 이기 때문에 최종적으로 x는 2.
+      x = x - y; // x=2, y=1 이기 때문에 x는 1.
+      x = x * y; // x=1, y=1 이기 때문에 x는 1.
+      x = x / y; // x=1, y=1 이기 때문에 x는 1.
+
+      // 사칙연산 기호는 + - * /
+      // % 나눈 나머지 - 나누고 나서 남은 나머지 값
+      x = 5;
+      y = 2;
+      let z = x % y; // 나머지는 1 이기 때문에 z = 1
+
+      // 제곱근 **
+      x = 3;
+      y = 2;
+      x = x ** y; // 3^2 = 9
+
+      // 복합 할당 연산자
+      x += y; // x = x + y;
+      x -= y; // x = x - y;
+      x *= y; // x = x * y;
+      x /= y; // x = x / y;
+      x %= y; // x = x % y;
+
+      // 2. 비교 연산자
+      x = 3;
+      y = 4;
+      console.log(x == y); // x와 y가 같은지를 비교, false
+      x = 3;
+      y = "3";
+      console.log(x == y); // true, 할당된 값만 비교(데이터 타입은 상관없음)
+      console.log(x === y); // false, 할당된 값과 데이터 타입이 모두 같은지를 비교
+
+      console.log(x != y); // false, 할당된 값만 비교(데이터 타입은 상관없음)
+      console.log(x !== y); // true, 할당된 값과 데이터 타입이 모두 같은지를 비교
+
+      x = 5;
+      y = 2;
+      console.log(x > y); // true
+      y = 5;
+      console.log(x >= y); // true
+      console.log(x < y); // false
+      console.log(x <= y); // true
+
+      // 3. 산술 연산자
+      // 증가연산자, 감소연산자, 단항 부정 연산자, 숫자화연산자
+      // 증가연산자는 ++ 기호를 사용. 1를 증가
+      x = 5;
+      y = x++;
+      console.log(y); // 5
+      console.log(x); // 6
+
+      x = 5;
+      y = ++x;
+      console.log(y); // 6
+
+      // 감소연사자는 -- 기호를 사용. 1를 감소
+      x = 5;
+      y = x--;
+      console.log(y); // 5
+      console.log(x); // 4
+
+      x = 5;
+      y = --x;
+      console.log(y); // 4
+
+      // 단항 부정 연산자 : 피연산자의 값의 부호가 바뀐다.
+      x = -3;
+      console.log(x); // -3
+      console.log(-x); // 3
+
+      // 숫자화 연산자 : 숫자가 아닌 문자/boolean 값을 숫자로 변환하는 시도를 함
+      // 사용되는 부호는 +
+      x = "3";
+      y = +x; // 3
+      console.log(y);
+      z = +true; // 1
+      console.log(+true);
+      console.log(+false);
+
+      // 4. 논리 연산자
+      // AND 비교는 &&
+      let o = true && false;
+      console.log(o); // false
+      o = 3 > 2 && 8 > 7 && 5 == 5;
+      console.log(o); // true
+
+      // OR 비교는 ||
+      o = true || false;
+      console.log(o); // true
+
+      o = 3 > 4 || 4 < 2 || 2 > 1;
+      console.log(o); // true
+
+      // 5. 문자열 연산자
+      let firstName = "John";
+      let lastName = "Doe";
+      let fullName = firstName + " " + lastName;
+      console.log(fullName); // John Doe
+
+      // 6. 조건(삼항) 연산자
+      let age = 16;
+      let isAdult = age >= 20 ? "성인" : "미성년자";
+      console.log(isAdult);
+
+      let point = 88;
+      let grade = point >= 90 ? "A" : point >= 80 ? "B" : "C";
+      console.log(grade);
+    </script>
+  </body>
+</html>

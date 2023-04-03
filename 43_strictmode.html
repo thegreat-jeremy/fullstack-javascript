@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // strict mode (엄격모드)
+      // 자바스크립트 문법을 엄격하게 체크하는 모드
+      // 초창기 기능이 불완전한 기능을 갖고 있는데.. 그냥 쓰라고..
+      // 기능이 업그레이드 되고, 신규 문법이 추가가 됐는데..
+      // 문제는 기존에 그 불완전했던 기능에 대해서는 수정이 없었음.
+      // ES5 부터 strict mode
+
+      //   "use strict";
+      x = 3; // 불완전한 문법
+
+      function myFunction() {
+        "use strict";
+        y = 2;
+      }
+
+      myFunction();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Scope - 선언된 변수에 대한 접근성을 의미
+
+      // 함수 안에서 선언된 변수는 함수 안에서만 참조되며, 함수 밖에서는 참조할수 없다.
+      function myFunction() {
+        let carName = "기아차";
+        console.log(carName);
+      }
+
+      myFunction();
+
+      //   console.log(carName); // 함수 밖에서 함수 안에 있는 변수 참조할수 없음
+
+      // 함수 밖에서 선언된 변수는 함수 밖은 물론이고 함수 안에서도 참조 할 수 있음.
+      let carName2 = "볼보";
+      function myFunction2() {
+        console.log(carName2);
+      }
+
+      myFunction2();
+
+      // 함수 밖과 함수 안은 scope 다르기 때문에 동일한 변수명으로 let,const 선언자를 사용해서 사용할 수 있음
+      let carName3 = "현대차";
+      function myFunction3() {
+        let carName3 = "아우디";
+        console.log(carName3);
+      }
+
+      myFunction3();
+    </script>
+  </body>
+</html>

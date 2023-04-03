@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 조건문 - if, switch
+
+      // if문
+      // if : 만일 ~라면,
+      // if문 기본 형식
+      // if(조건식) {
+      //     // 조건식을 만족하면 코드 블록을 실행
+      // }
+
+      // if(조건식) {
+      //     // 조건식을 만족하면 코드 블록을 실행
+      // } else {
+      //     // 조건식을 만족하지 않으면 else 블록의 코드가 실행
+      // }
+
+      // if(조건식1) {
+      //     // 조건식1을 만족하면 코드 블록을 실행
+      // } else if(조건식2) {
+      //     // 조건식2을 만족하면 코드 블록을 실행
+      // } else if(조건식3) {
+      //     // 조건식3을 만족하면 코드 블록을 실행
+      // } else if(조건식4) {
+      //     // 조건식4을 만족하면 코드 블록을 실행
+      // } else {
+      //     // 조건식1, 조건식2, 조건식3, 조건식4 순서대로 비교하고 모두 만족하지 않으면 else 블록의 코드를 실행
+      // }
+
+      // 나이에 따른 버스 요금을 계산하는 조건문
+      let busFare = 0;
+      let age = 70;
+
+      if (age < 8) {
+        busFare = 0;
+      } else if (age >= 8 && age < 14) {
+        busFare = 450;
+      } else if (age >= 14 && age < 20) {
+        busFare = 700;
+      } else if (age >= 20 && age < 70) {
+        busFare = 1000;
+      } else {
+        // 70보다 같거나 큰 경우
+        busFare = 0;
+      }
+
+      console.log("버스요금:", busFare);
+
+      if (age < 8) {
+        busFare = 0;
+      } else if (age < 14) {
+        busFare = 450;
+      } else if (age < 20) {
+        busFare = 700;
+      } else if (age < 70) {
+        busFare = 1000;
+      } else {
+        busFare = 0;
+      }
+
+      busFare =
+        age < 8 ? 0 : age < 14 ? 450 : age < 20 ? 700 : age < 70 ? 1000 : 0;
+
+      // 다음과 같은 값은 조건식에서 모두 것지(false)로 취급이 됨.
+      // false
+      // undefined
+      // null
+      // 0
+      // "" 비어있는 문자열
+      let x;
+      x = null;
+      x = 0;
+      x = "";
+      if (x) {
+      } else {
+        console.log("else구문이 실행");
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" name="" id="" value="" />
+    <input type="text" name="" id="" />
+    <script>
+      // Number 객체
+      let num = 323;
+      // toString() - Number -> String
+      let strNum = num.toString();
+
+      // toExponential() - 숫자를 지수표기법으로 반환. 문자열반환
+      // 지수는 과학이나 공학에서 아주 큰 숫자를 표기하는 기법
+      let x = 10.656;
+      console.log(x.toExponential(2));
+
+      // toFixed() - 소수점 몇자리까지 보여줄지 결정하는 함수
+      // 반올림해서 자리수 맞춰줌.
+      // 12.348723
+      // 3.1883637891
+      // 3.2
+      // 소수점 2자리로 표기, 소수점 1자리.
+      console.log(x.toFixed(0)); // 11
+      console.log(x.toFixed(1)); // 10.7
+      console.log(x.toFixed(2)); // 10.66
+      console.log(x.toFixed(4)); // 10.6560
+
+      // toPrecision() - 정수와 소수점 모두를 합쳐서 몇자리까지 보여줄지 결정.
+      console.log(x.toPrecision(2)); // 11
+      console.log(x.toPrecision(3)); // 10.7
+
+      // parseInt() - 문자를 정수로 반환
+      console.log(parseInt("3")); // 숫자 3
+      console.log(parseInt("12.33")); // 숫자 12
+      console.log(parseInt("12.77")); // 숫자 12
+      console.log(parseInt("10 20 30")); // 숫자 10
+      console.log(parseInt("10 years")); // 숫자 10
+      console.log(parseInt("10살")); // 숫자 10
+      // 실무에서는 사용자로 부터 입력 받은 숫자 값을 연산을 해야 하는 경우 parseInt()
+      // 사용자로 부터 입력 받은 값은 아무리 사용자가 숫자를 입력해도 실제로는 문자로 저장됨.
+      // 그래서 연산을 하려면 문자를 숫자로 바꿔주기 위해서 parseInt() 함수를 사용해야 함.
+
+      // parseFloat() - 부동소수점으로 반환
+      console.log(parseFloat("12.33"));
+
+      console.log(Number.MAX_SAFE_INTEGER);
+      console.log(Number.MIN_SAFE_INTEGER);
+    </script>
+  </body>
+</html>
